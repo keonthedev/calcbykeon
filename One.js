@@ -42,7 +42,7 @@ const One = () => {
     }
     // above is for minus button
 
-      const handleEqualsClick = () => {
+  const handleEqualsClick = () => {
         const num1 = parseFloat(number1);
         const num2 = parseFloat(number2);
         let sum;
@@ -50,23 +50,20 @@ const One = () => {
         if (operation === '+') {
            sum = num1 + num2;
         } else if (operation === '-') {
-            sum = num1 - num2;
+            sum = num1 - num2; 
         } else if (operation === '*') {
             sum = num1 * num2;
         } else if (operation === '/') {
-            sum = num1 / num2;
+            sum = num1 / num2;   
         } else {
             sum = '0';
         } 
-
-        setResult(sum.toString());
-
-        setNumber1('');
+        setNumber1(sum.toString());
         setNumber2('');
         setOperation('');
+        setResult(sum.toString());
     }; 
-   // all operations work. Now i need to figure out how to get multiple operations to work 
-    // Above is for equals sign button
+   // above handles operations and is for equals button 
 
     // below are unique to AC and Push me buttons 
     const clear =  () => {
