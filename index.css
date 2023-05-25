@@ -5,40 +5,49 @@
 }
 body {
   height: 100vh;
-  background-color: grey;
+  background: linear-gradient(45deg, 
+  #F2E3CE 25%,
+   #F5DEB3 50%,
+    #C4B39B 75%,
+     #C3B091 100%);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 #container {
-  box-sizing: border-box;
   border: 2px solid black;
   border-radius: 5%;
 }
 .displayBox {
   height: 60px;
-  box-sizing: border-box;
-  border: 2px solid black;
+  width: 100%;
+  border: 2px solid rgba(235, 175, 76, 0.8);
   border-radius: 5%;
-  background-color: #ffecec;
+  background-color: rgba(235, 175, 76, 0.8);
 }
 #display {
   height: 36px;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   margin-top: 28px;
+  border-radius: 5%;
 }
 #buttonContainer {
   width: 100%;
-  box-sizing: border-box;
   border: 2px solid black;
+  display: block;
+  text-align: center;
+  background-color: rgba(194, 140, 120, 0.9);
 }
 button {
-  box-sizing: border-box;
   height: 2em;
   width: 30%;
   border-radius: 8px 13px 8px 13px;
+  margin-bottom: 2px;
+  margin-right: 1px;
+  background-color: rgba(143, 204, 167, 0.8);
 }
 button:hover {
-  border: 2px solid dimgray;
+  background-color: rgba(120, 140, 120, 0.61);
 }
