@@ -21,6 +21,18 @@ const One = () => {
            setNumber2((prevNumber2) => parseFloat(prevNumber2 + digit));
        }
     }
+   
+    const handleDecClick = (digit) => {
+        setResult(
+            (prevNumber) => {
+                if (prevNumber.includes('.')) {
+                    return prevNumber 
+                } else {
+                    return prevNumber + digit
+                }
+            }
+        )
+    }
     
     function handlePlusClick() {
         setResult((prevResult) => {
@@ -100,7 +112,7 @@ const One = () => {
             <button id="equals" onClick={handleEqualsClick}>=</button>
             <button onClick={handlePlusClick}>+</button>
             <button id="subtract" onClick={handleMinusClick}>-</button>
-            <button id="decimal">.</button>
+            <button id="decimal" onClick={() => handleDecClick('.')}>.</button>
             <button id='zero' onClick={() => handleNumberClick('0')}>0</button>
             <button onClick={pushMe}>Push Me!</button>
         </div>
