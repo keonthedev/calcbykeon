@@ -7,51 +7,79 @@ const One = () => {
     const [number2, setNumber2] = useState('');
     const [operation, setOperation] = useState(() => {return ''});
     const [result, setResult] = useState(() => {return '0'});
+    const [decimalClicked1, setDecimalClicked1] = useState(false);
+    const [decimalClicked2, setDecimalClicked2] = useState(false);
+    // React Hooks above
     // make useState's above in to functions to prevent re-rendering to the console
     // eslint-disable-next-line no-lone-blocks
     // React Hooks above
 
     const handleNumberClick = (digit) => {
-     setResult((prevNumber) =>  {if (prevNumber !== '0') {return prevNumber + digit} else {return digit}});
-       //above adds a placeholder to the number string ie 1, 11, 111...
-
-       if (operation === '') {
-           setNumber1((prevNumber1) => parseFloat(prevNumber1 + digit));
-       } else {
-           setNumber2((prevNumber2) => parseFloat(prevNumber2 + digit));
-       }
-    }
+              setResult((prevNumber) => {
+            if (prevNumber !== '0') {
+              return prevNumber + digit;
+            } else {
+              return digit;
+            }
+          });
+      
+          if (operation === '') {
+            if (digit === '.') {
+              if (!decimalClicked1) {
+                setNumber1((prevNumber1) => prevNumber1 + digit);
+                setDecimalClicked1(true);
+              }
+            } else {
+              setNumber1((prevNumber1) => parseFloat(prevNumber1 + digit));
+            }
+          } else {
+            if (digit === '.') {
+              if (!decimalClicked2) {
+                setNumber2((prevNumber2) => prevNumber2 + digit);
+                setDecimalClicked2(true);
+              }
+            } else {
+              setNumber2((prevNumber2) => parseFloat(prevNumber2 + digit));
+            }
+          }
+    };
    
     const handleDecClick = (digit) => {
-        setResult(
-            (prevNumber) => {
-                if (prevNumber.includes('.')) {
-                    return prevNumber 
-                } else {
-                    return prevNumber + digit
-                }
+            if (operation === '') {
+            if (!decimalClicked1) {
+              setResult((prevNumber) => prevNumber + '.');
+              setNumber1((prevNumber1) => prevNumber1 + '.');
+              setDecimalClicked1(true);
             }
-        )
-    }
+          } else {
+            if (!decimalClicked2) {
+              setResult((prevNumber) => prevNumber + '.');
+              setNumber2((prevNumber2) => prevNumber2 + '.');
+              setDecimalClicked2(true);
+            }
+          }
+          setDecimalClicked1(false);
+          setDecimalClicked2(false);
+    };
     
-    function handlePlusClick() {
+    const handlePlusClick = () => {
         setResult((prevResult) => {
             if (prevResult !== '0') {
                 return prevResult + '+'
             } else { return '+'}
         })
         setOperation('+');
-    }
+    };
     // above is for plus button
 
-    function handleMinusClick () {
+    const handleMinusClick = () => {
         setResult((prevResult) => {
             if (prevResult !== '0') {
                 return prevResult + '-'
             } else {return '-'}
         })
         setOperation('-');
-    }
+    };
     // above is for minus button
 
   const handleEqualsClick = () => {
