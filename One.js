@@ -16,7 +16,7 @@ const One = () => {
 
     const handleNumberClick = (digit) => {
               setResult((prevNumber) => {
-            if (prevNumber !== '0') {
+            if (prevNumber !== '0' || digit === '.') {
               return prevNumber + digit;
             } else {
               return digit;
