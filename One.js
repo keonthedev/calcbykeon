@@ -15,8 +15,8 @@ const One = () => {
     // React Hooks above
 
     const handleNumberClick = (digit) => {
-              setResult((prevNumber) => {
-            if (prevNumber !== '0' || digit === '.') {
+      setResult((prevNumber) => {
+            if (prevNumber !== '0') {
               return prevNumber + digit;
             } else {
               return digit;
@@ -41,11 +41,11 @@ const One = () => {
             } else {
               setNumber2((prevNumber2) => parseFloat(prevNumber2 + digit));
             }
-          }
+          } 
     };
    
     const handleDecClick = (digit) => {
-            if (operation === '') {
+        if (operation === '') {
             if (!decimalClicked1) {
               setResult((prevNumber) => prevNumber + '.');
               setNumber1((prevNumber1) => prevNumber1 + '.');
@@ -57,9 +57,7 @@ const One = () => {
               setNumber2((prevNumber2) => prevNumber2 + '.');
               setDecimalClicked2(true);
             }
-          }
-          setDecimalClicked1(false);
-          setDecimalClicked2(false);
+          } 
     };
     
     const handlePlusClick = () => {
@@ -102,6 +100,8 @@ const One = () => {
         setNumber2('');
         setOperation('');
         setResult(sum.toString());
+        setDecimalClicked1(false);
+        setDecimalClicked2(false);
     }; 
    // above handles operations and is for equals button 
 
@@ -111,6 +111,8 @@ const One = () => {
         setNumber2('');
         setOperation('');
         setResult('0');
+        setDecimalClicked1(false);
+        setDecimalClicked2(false);
       };
 
 
